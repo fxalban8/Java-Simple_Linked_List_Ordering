@@ -89,6 +89,33 @@ public class SimpleLinkedList {
 		System.out.println(current);
 	}
 	
+	public void deleteElements(int val) {
+		//Node current=head;
+		if(head.value==val) {
+			
+			this.head=head.next;
+			System.out.println("Value "+ val+ " has been deleted");
+			//current=null;
+			
+		}else {
+			Node current=head;
+			while(current.next!=null&&current.next.value<val) {
+				current=current.next;	//keep going through the list
+			}
+			
+			if(current.next.value==val) {
+				Node after= current.next.next;	
+				current.next.next=null;
+				current.next=after;
+				System.out.println("Value "+ val+ " has been deleted");
+			}else {
+				System.out.println("Value "+ val+ " NOT found");
+					
+			}
+			
+		}
+	}
+	
 	
 	//MAIN 
 	
@@ -139,6 +166,22 @@ public class SimpleLinkedList {
 		
 		sll1.addElement(-1);
 		sll1.showElements();
+		
+		sll1.deleteElements(0);
+		sll1.showElements();
+		
+		sll1.deleteElements(-1);
+		sll1.showElements();
+
+
+		sll1.deleteElements(7);
+		sll1.showElements();
+		
+		sll1.deleteElements(8);
+		sll1.showElements();
+		
+		
+		
 		
 	}
 
